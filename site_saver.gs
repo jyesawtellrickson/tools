@@ -1,3 +1,6 @@
+/*
+  Function to regularly save HTML from target website.
+*/
 function saveHTML() {
   var response = UrlFetchApp.fetch("http://www.foodline.sg")
   var html = response.getContentText()
@@ -16,7 +19,6 @@ function readHTML(htmlFile) {
 
 
 function test(){
-  
   // get folder with all the HTML files 
   var foldId = "0By25ANcDsNEueEZQQWlwMDQtRXM"
   // real all the files into an iterator
@@ -151,20 +153,9 @@ function addToSpreadsheet(caterer, views, date, row){
   return
 }
 
-
-function test(){
-  Logger.log(extractCaterer("foodline_jyecatering_1234567890"))
-  // Logger.log(extractDate("testextract1234567890"))
-  //addToSpreadsheet("Jye's catering", 9001, "01/01/17")
-}
-  
-
-
-//var files = DriveApp.getFilesByName(fileName)
-//var file = files.next();
-// var file = DriveApp.getFileById("0By25ANcDsNEubTBDcnM5VjlZNnM")
   
 // scan through the pages to find text then take numbers inside <b> tags in front.
+// regex...
 function getViews(file){
   var text = file.getAs("text/html").getDataAsString()
   var end = text.indexOf(" visitors have viewed this caterer in the last 24hrs")-4
@@ -180,33 +171,6 @@ function moveFile(file, sourceFolder, destFolder){
 }
 
 
-
-
-function getElementsByClassName(element, classToFind) {  
-  var data = [];
-  var descendants = element.getDescendants();
-  descendants.push(element);  
-  for(i in descendants) {
-    var elt = descendants[i].asElement();
-    if(elt != null) {
-      var classes = elt.getAttribute('class');
-      if(classes != null) {
-        classes = classes.getValue();
-        if(classes == classToFind) data.push(elt);
-        else {
-          classes = classes.split(' ');
-          for(j in classes) {
-            if(classes[j] == classToFind) {
-              data.push(elt);
-              break;
-            }
-          }
-        }
-      }
-    }
-  }
-  return data;
-}
 
 function getLastRowCol(sheet,col){
   var lastRow = sheet.getMaxRows();
