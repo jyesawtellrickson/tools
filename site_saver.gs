@@ -1,11 +1,26 @@
+
+function saveFoodlineHTML() {
+  saveHtml("http://www.foodline.sg", "0By25ANcDsNEuclVwb25XSkpVWHM");
+}
+
+function venuerific(){
+  // scan venuerific for list of vendors
+  var url_base = "http://www.venuerific.com/sg/search?page=";
+  var dest_folder = "0By25ANcDsNEuZDM2TVprWmUyajA";
+  // save html
+  for (var i = 1; i < 20; i++){
+    saveHTML(url_base+i,dest_folder);
+  }
+}
+
 /*
   Function to regularly save HTML from target website.
 */
-function saveHTML() {
-  var response = UrlFetchApp.fetch("http://www.foodline.sg")
+function saveHTML(url, dest_folder) {
+  var response = UrlFetchApp.fetch(url)
   var html = response.getContentText()
-  var dest_folder = DriveApp.getFolderById("0By25ANcDsNEuclVwb25XSkpVWHM")
-  var fileName = 'foodline_' + Utilities.formatDate(new Date(),Session.getScriptTimeZone(),"YYMMddHHmm")
+  var dest_folder = DriveApp.getFolderById(dest_folder)
+  var fileName = url + "_" + Utilities.formatDate(new Date(),Session.getScriptTimeZone(),"YYMMddHHmm")
   dest_folder.createFile(fileName, html, 'text/html');
 }
 
