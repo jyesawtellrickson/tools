@@ -1,4 +1,10 @@
+/*
+We can calculate foodline’s caterer conversion rate by measuring the number of views on each caterer and comparing this with the number of conversions on each caterer. This doesn’t give an overall conversion for the site, but gives us a comparison for our vendor pages.
 
+In order to get data, a scan can be taken once a day at midnight of all caterer pages. 208 pages = 5000 pages / week. Potentially too large. Focus in on top 50 caterers = 350 pages.
+
+Extract list of caterers from orders data
+*/
 function saveFoodlineHTML() {
   saveHtml("http://www.foodline.sg", "0By25ANcDsNEuclVwb25XSkpVWHM");
 }
