@@ -1,3 +1,5 @@
+// on open display report update button to user
+// this can only be run from the right account
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   // Or DocumentApp or FormApp.
@@ -6,6 +8,8 @@ function onOpen() {
       .addToUi();
 }
 
+
+// get all the sent emails
 function getSent(){
   var emailRegex = new RegExp("<([^>]+)>")
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
