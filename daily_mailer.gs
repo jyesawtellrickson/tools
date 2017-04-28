@@ -100,6 +100,9 @@ function addEmail(message){
 
 
 function emailExtract(message){
+  /*
+  Process email. Primarily with findText function
+  */
   var msgText = message.getBody();
   msgText = cleanText(msgText);
   var subject = message.getSubject();
